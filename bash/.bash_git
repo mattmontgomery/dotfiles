@@ -1,14 +1,10 @@
 #!/bin/bash
 
 gitbranch() {
-  if [ -d .git ]; then
-    git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-  fi
+  git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 gitchanges() {
-  if [ -d .git ]; then
-    git diff --name-status 2>/dev/null | wc -l | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | xargs echo " ^" | sed -e 's/ //g'
-  fi
+  git diff --name-status 2>/dev/null | wc -l | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | xargs echo " ^" | sed -e 's/ //g'
 }
 
 function prompt {

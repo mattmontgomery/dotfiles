@@ -4,7 +4,7 @@ gitbranch() {
   git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 gitchanges() {
-  git diff origin --name-status 2>/dev/null | wc -l | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | xargs echo " ^" | sed -e 's/ //g' | sed -e 's/\^0//g'
+  git diff head --name-status 2>/dev/null | wc -l | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | xargs echo " ^" | sed -e 's/ //g' | sed -e 's/\^0//g'
 }
 
 function prompt {

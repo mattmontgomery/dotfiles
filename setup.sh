@@ -2,9 +2,16 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-ln -f -s "$DIR"/shell/git ~/.bash_git
-ln -f -s "$DIR"/shell/aliases ~/.bash_aliases
-ln -f -s "$DIR"/shell/ls ~/.bash_ls
-source ~/.bash_git
-source ~/.bash_aliases
-source ~/.bash_ls
+cat $DIR/shell/git $DIR/shell/aliases $DIR/shell/ls > $DIR/.aliases 
+
+echo 'Wrote combined file at $DIR/.aliases'
+
+CMD="source $DIR/.aliases"
+
+if grep --quiet $CMD ~/.zshrc; then
+  echo "Already in zshrc"
+else
+  echo '$CMD' >> ~/.zshrc
+fi
+
+$CMD

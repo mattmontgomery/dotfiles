@@ -1,9 +1,0 @@
-alias delete_local_branches='git branch --merged | xargs -n 1 git branch -d'
-
-cjdfunction() {
-	pushd ~/Dropbox/*/*/${1}* # ~/Dropbox is my root folder, change to suit yours.
-}
-
-export cjdfunction
-
-alias cjd='cjdfunction'
